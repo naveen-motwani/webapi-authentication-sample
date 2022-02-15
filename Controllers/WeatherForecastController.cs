@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PowerBIApi.Controllers
@@ -28,6 +29,17 @@ namespace PowerBIApi.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [Authorize]
+        [HttpGet("GetSecureData")]
+        public List<string> GetSecureData()
+        {
+            return new List<string>()
+            {
+                "abc",
+                "edg"
+            };
         }
     }
 }
